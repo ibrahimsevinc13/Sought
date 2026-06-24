@@ -15,9 +15,9 @@ fonksiyonel bir dinamik pazar yeri simülasyonudur.
   bağlantı ayarlarını kontrol etmeniz yeterlidir.
 
 3. ADRES VE ERİŞİM BİLGİLERİ
-- Kullanıcı / Ziyaretçi Vitrini: localhost/odev_proje/satici_vitrini.php
-- Yönetim Paneli (Envanter): localhost/odev_proje/ilan_listesi.php
-- Yeni Ürün Ekleme Sayfası: localhost/odev_proje/ilan_ekle.php
+- Kullanıcı / Ziyaretçi Vitrini: localhost/Sought/satici_vitrini.php
+- Yönetim Paneli (Envanter): localhost/Sought/ilan_listesi.php
+- Yeni Ürün Ekleme Sayfası: localhost/Sought/ilan_ekle.php
 
 4. YÖNETİCİ KİMLİK BİLGİLERİ (ADMIN CREDENTIALS)
 - Yönetici Kullanıcı Adı: [Buraya Giriş Kullanıcı Adınızı Yazın]
