@@ -1,0 +1,433 @@
+/* --- Lüks Gece Mavisi ve Altın Tema Değişkenleri --- */
+:root {
+    --bg-dark-midnight: #0A1128;   /* YENİ: Derin ve Lüks Gece Mavisi */
+    --gold-primary: #D4AF37;       /* Saf Altın Tonu */
+    --gold-light: #F3E5AB;         /* Parlak Şampanya */
+    --gold-dark: #AA771C;          /* Koyu Eskitme Altın */
+    --text-main: #F8F9FA;
+    --text-muted: #9BA4B5;
+    --glass-bg: rgba(10, 17, 40, 0.75); /* Gece mavisi tonlu cam efekti */
+    --glass-border: rgba(212, 175, 55, 0.15);
+}
+
+/* --- Genel Sıfırlama --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark-midnight);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-main);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- Giriş Animasyonları (Sinematik His) --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+    50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+    100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+}
+
+/* --- Üst Menü (Glassmorphism - Cam Efekti) --- */
+.topbar {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 100;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--gold-primary);
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.5px;
+}
+
+/* --- YENİ: Logoya Özel Nefes Alan Altın Işık Animasyonu --- */
+@keyframes logoPremiumGlow {
+    0% { filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3)); }
+    50% { 
+        filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.7)) 
+                drop-shadow(0 0 40px rgba(212, 175, 55, 0.4)); 
+    }
+    100% { filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3)); }
+}
+
+/* --- YENİ: Logoya Özel Sabit Altın Işık --- */
+.site-logo {
+    width: 45px;
+    height: auto;
+    object-fit: contain;
+    transform: scale(2.7);
+    margin-right: 18px;
+    
+    /* İki katmanlı, hareketsiz ve tok bir altın parlaması */
+    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.6)) 
+            drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+}
+
+.logo-ext {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+/* --- Üst Menü Arama Çubuğu --- */
+.topbar-search {
+    display: flex;
+    background-color: rgba(10, 17, 40, 0.5); /* Gece mavisi zemin */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    width: 450px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.topbar-search:focus-within {
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+    background-color: rgba(10, 17, 40, 0.85);
+}
+
+.topbar-search input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 12px 25px;
+    color: var(--text-main);
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.topbar-search input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.topbar-search-btn {
+    background-color: transparent;
+    color: var(--gold-primary);
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.topbar-search-btn:hover {
+    color: var(--gold-light);
+    transform: scale(1.1);
+}
+
+/* --- Kullanıcı Aksiyonları --- */
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.notification-wrapper {
+    position: relative;
+    cursor: pointer;
+}
+
+.notification-icon {
+    font-size: 20px;
+    color: var(--gold-primary);
+    transition: 0.3s;
+}
+
+.notification-icon:hover {
+    color: var(--gold-light);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* Bildirim Noktası */
+.badge {
+    position: absolute;
+    top: -2px; right: -2px;
+    width: 8px; height: 8px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #e74c3c;
+}
+
+.btn-signup {
+    background: transparent;
+    color: var(--gold-primary);
+    border: 1px solid var(--gold-primary);
+    padding: 10px 28px;
+    border-radius: 2px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+    transition: all 0.4s ease;
+}
+
+.btn-signup:hover {
+    background: var(--gold-primary);
+    color: var(--bg-dark-midnight);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* --- Hero Alanı (Kusursuz Merkezleme ve Gece Mavisi Arka Plan) --- */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* Zenginleştirilmiş Gece Mavisi Katmanı */
+    background-image: 
+        linear-gradient(to bottom, rgba(10, 17, 40, 0.75) 0%, rgba(10, 17, 40, 0.95) 100%), 
+        url('images/map.jpeg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    text-align: center;
+    overflow: hidden;
+    animation: fadeInUp 1.2s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    width: 100%;
+    padding: 0 40px;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 46px;
+    color: var(--text-main);
+    margin-bottom: 30px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 1px;
+    text-shadow: 0 10px 30px rgba(10, 17, 40, 0.9);
+}
+
+.text-gold {
+    background: linear-gradient(to right, var(--gold-light), var(--gold-primary), var(--gold-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-style: italic;
+}
+
+.hero-objective {
+    font-size: 17px;
+    color: #B4BCCB;
+    margin-bottom: 50px;
+    line-height: 1.9;
+    font-weight: 300;
+    padding: 0 40px;
+}
+
+.text-highlight {
+    color: var(--text-main);
+    font-weight: 500;
+    border-bottom: 1px solid var(--gold-primary);
+}
+
+/* --- SESSİZ LÜKS: Premium Şeffaf Buton --- */
+.btn-create-request-premium {
+    position: relative;
+    background: rgba(10, 17, 40, 0.5); /* Arka planı hafif gece mavisi transparan */
+    color: #D4AF37;
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    padding: 18px 55px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(10, 17, 40, 0.6);
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.btn-icon {
+    font-size: 15px;
+    color: #D4AF37;
+    transition: all 0.6s ease;
+}
+
+/* Faresi Üzerine Geldiğindeki İhtişamlı Dolgu Efekti */
+.btn-create-request-premium:hover {
+    background: linear-gradient(135deg, #D4AF37 0%, #AA771C 100%);
+    color: var(--bg-dark-midnight); /* İç yazı rengi muazzam uyum için gece mavisi */
+    border-color: transparent;
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+    transform: translateY(-3px);
+}
+
+.btn-create-request-premium:hover .btn-icon {
+    color: var(--bg-dark-midnight);
+}
+
+/* Ekstra Derinlik İçin İnce Parlama */
+.btn-create-request-premium::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: 0.6s;
+}
+
+.btn-create-request-premium:hover::before {
+    opacity: 1;
+}
+/* --- PREMIUM MODAL TASARIMI --- */
+.modal-kapsayici {
+    display: none; /* Başlangıçta gizli */
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 17, 40, 0.8); /* Gece mavisi saydamlık */
+    backdrop-filter: blur(5px); /* Cam efekti */
+}
+
+.modal-icerik {
+    background: linear-gradient(145deg, #111A3A, #0A1128);
+    border: 1px solid #D4AF37; /* Altın sarısı çerçeve */
+    margin: 8% auto;
+    padding: 30px 40px;
+    width: 35%; /* Ekranda kaplayacağı alan */
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    color: white;
+}
+
+.kapat-btn {
+    color: #D4AF37;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.kapat-btn:hover { color: #FFF; }
+
+.modal-baslik {
+    color: #D4AF37;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 5px;
+}
+
+.modal-alt-baslik {
+    font-size: 13px;
+    color: #A0A5B5;
+    margin-bottom: 25px;
+}
+
+.input-grup { margin-bottom: 15px; }
+
+.input-grup label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    color: #D4AF37;
+    letter-spacing: 1px;
+}
+
+.input-grup input {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 4px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+.input-grup input:focus {
+    outline: none;
+    border-color: #D4AF37;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-gonder {
+    width: 100%;
+    padding: 14px;
+    background-color: #D4AF37;
+    color: #0A1128;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-gonder:hover {
+    background-color: #F3E5AB;
+    transform: translateY(-2px);
+}
+/* --- ANA MENÜ TASARIMI --- */
+.ana-menu {
+    display: flex;
+    gap: 30px; /* Linkler arası boşluk */
+    align-items: center;
+}
+
+.ana-menu a {
+    color: #A0A5B5; /* Hafif gri/mavi ton */
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* İkon ile yazı arası boşluk */
+}
+
+.ana-menu a i {
+    font-size: 16px;
+    color: #D4AF37; /* İkonlar altın sarısı */
+}
+
+.ana-menu a:hover {
+    color: #FFF; /* Üzerine gelince beyaz olsun */
+    transform: translateY(-2px); /* Hafif yukarı kalkma efekti */
+}

@@ -1,0 +1,27 @@
+# Soughts Premium Marketplace — Root Security Rules
+# Güvenlik başlıkları ve dizin koruması
+
+# Dizin listelemeyi kapat
+Options -Indexes
+
+# Sunucu imzasını gizle
+ServerSignature Off
+
+# Güvenlik başlıkları
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Config dizinine erişimi engelle
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^config/ - [F,L]
+</IfModule>
+
+# .htaccess ve .git dosyalarına erişimi engelle
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
